@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.13.35828.75 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proyecto_Lumel", "Proyecto_Lumel.csproj", "{5082DD0C-DCBB-4BEF-982F-35FD0B7F7DBA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proyecto_Lumel", "Proyecto_Lumel\Proyecto_Lumel.csproj", "{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,12 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5082DD0C-DCBB-4BEF-982F-35FD0B7F7DBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5082DD0C-DCBB-4BEF-982F-35FD0B7F7DBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5082DD0C-DCBB-4BEF-982F-35FD0B7F7DBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5082DD0C-DCBB-4BEF-982F-35FD0B7F7DBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {575F7FE4-1B29-4B7B-81AF-3FC3F16EEB78}
 	EndGlobalSection
 EndGlobal

@@ -169,11 +169,11 @@ namespace Proyecto_Lumel.Data
                     command.Connection = connection;
                     command.CommandText = "SELECT id_huesped, nombre, apellido, tipo_documento, numero_documento, " +
                                          "telefono, correo, direccion FROM Huesped " +
-                                         "WHERE nombre LIKE @filter OR apellido LIKE @filter OR " +
-                                         "numero_documento LIKE @filter " +
+                                         "WHERE nombre = @filter OR apellido = @filter OR " +
+                                         "numero_documento = @filter " +
                                          "ORDER BY apellido, nombre";
 
-                    command.Parameters.Add("@filter", SqlDbType.NVarChar).Value = "%" + filter + "%";
+                    command.Parameters.Add("@filter", SqlDbType.NVarChar).Value = filter;
 
                     using (var reader = command.ExecuteReader())
                     {

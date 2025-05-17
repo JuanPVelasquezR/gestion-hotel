@@ -11,3 +11,16 @@ C:\Users\velas\Desktop\Hotel corregido\Proyecto_Lumel\Proyecto_Lumel\obj\Debug\P
 C:\Users\velas\Desktop\Hotel corregido\Proyecto_Lumel\Proyecto_Lumel\obj\Debug\Proyecto_Lumel.exe
 C:\Users\velas\Desktop\Hotel corregido\Proyecto_Lumel\Proyecto_Lumel\obj\Debug\Proyecto_Lumel.pdb
 C:\Users\velas\Desktop\Hotel corregido\Proyecto_Lumel\Proyecto_Lumel\obj\Debug\Proyecto_Lumel.Forms.FormHuéspedes.resources
+C:\Users\velas\gestion-hotel\Proyecto_Lumel\Proyecto_Lumel\bin\Debug\Proyecto_Lumel.exe.config
+C:\Users\velas\gestion-hotel\Proyecto_Lumel\Proyecto_Lumel\bin\Debug\Proyecto_Lumel.exe
+C:\Users\velas\gestion-hotel\Proyecto_Lumel\Proyecto_Lumel\bin\Debug\Proyecto_Lumel.pdb
+C:\Users\velas\gestion-hotel\Proyecto_Lumel\Proyecto_Lumel\bin\Debug\FontAwesome.Sharp.dll
+C:\Users\velas\gestion-hotel\Proyecto_Lumel\Proyecto_Lumel\obj\Debug\Proyecto_Lumel.csproj.AssemblyReference.cache
+C:\Users\velas\gestion-hotel\Proyecto_Lumel\Proyecto_Lumel\obj\Debug\Proyecto_Lumel.FormMenu.resources
+C:\Users\velas\gestion-hotel\Proyecto_Lumel\Proyecto_Lumel\obj\Debug\Proyecto_Lumel.Forms.FormHuéspedes.resources
+C:\Users\velas\gestion-hotel\Proyecto_Lumel\Proyecto_Lumel\obj\Debug\Proyecto_Lumel.Properties.Resources.resources
+C:\Users\velas\gestion-hotel\Proyecto_Lumel\Proyecto_Lumel\obj\Debug\Proyecto_Lumel.csproj.GenerateResource.cache
+C:\Users\velas\gestion-hotel\Proyecto_Lumel\Proyecto_Lumel\obj\Debug\Proyecto_Lumel.csproj.CoreCompileInputs.cache
+C:\Users\velas\gestion-hotel\Proyecto_Lumel\Proyecto_Lumel\obj\Debug\Proyecto.84ACDAC1.Up2Date
+C:\Users\velas\gestion-hotel\Proyecto_Lumel\Proyecto_Lumel\obj\Debug\Proyecto_Lumel.exe
+C:\Users\velas\gestion-hotel\Proyecto_Lumel\Proyecto_Lumel\obj\Debug\Proyecto_Lumel.pdb

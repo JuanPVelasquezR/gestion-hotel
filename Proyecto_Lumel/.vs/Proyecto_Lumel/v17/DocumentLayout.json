@@ -1,25 +1,25 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\velas\\Desktop\\Hotel corregido\\Proyecto_Lumel\\",
+  "WorkspaceRootPath": "C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|C:\\Users\\velas\\Desktop\\Hotel corregido\\Proyecto_Lumel\\proyecto_lumel\\formmainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|c:\\users\\velas\\gestion-hotel\\proyecto_lumel\\proyecto_lumel\\formmainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|solutionrelative:proyecto_lumel\\formmainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|C:\\Users\\velas\\Desktop\\Hotel corregido\\Proyecto_Lumel\\proyecto_lumel\\formmainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\proyecto_lumel\\formmainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|solutionrelative:proyecto_lumel\\formmainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|c:\\users\\velas\\desktop\\hotel corregido\\proyecto_lumel\\proyecto_lumel\\forms\\formhu\u00E9spedes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\proyecto_lumel\\forms\\formhu\u00E9spedes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|solutionrelative:proyecto_lumel\\forms\\formhu\u00E9spedes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|c:\\users\\velas\\desktop\\hotel corregido\\proyecto_lumel\\proyecto_lumel\\presenters\\huespedpresenter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\proyecto_lumel\\presenters\\huespedpresenter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|solutionrelative:proyecto_lumel\\presenters\\huespedpresenter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|C:\\Users\\velas\\Desktop\\Hotel corregido\\Proyecto_Lumel\\proyecto_lumel\\formmainmenu.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\proyecto_lumel\\formmainmenu.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|solutionrelative:proyecto_lumel\\formmainmenu.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -36,34 +36,32 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "FormHu\u00E9spedes.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\velas\\Desktop\\Hotel corregido\\Proyecto_Lumel\\Proyecto_Lumel\\Forms\\FormHu\u00E9spedes.cs",
+              "DocumentMoniker": "C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\Proyecto_Lumel\\Forms\\FormHu\u00E9spedes.cs",
               "RelativeDocumentMoniker": "Proyecto_Lumel\\Forms\\FormHu\u00E9spedes.cs",
               "ToolTip": "C:\\Users\\velas\\Desktop\\Hotel corregido\\Proyecto_Lumel\\Proyecto_Lumel\\Forms\\FormHu\u00E9spedes.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Proyecto_Lumel\\Forms\\FormHu\u00E9spedes.cs [Dise\u00F1o]",
+              "RelativeToolTip": "..\\..\\Desktop\\Hotel corregido\\Proyecto_Lumel\\Proyecto_Lumel\\Forms\\FormHu\u00E9spedes.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T14:28:04.703Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2025-05-13T14:28:04.703Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "HuespedPresenter.cs",
-              "DocumentMoniker": "C:\\Users\\velas\\Desktop\\Hotel corregido\\Proyecto_Lumel\\Proyecto_Lumel\\Presenters\\HuespedPresenter.cs",
+              "DocumentMoniker": "C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\Proyecto_Lumel\\Presenters\\HuespedPresenter.cs",
               "RelativeDocumentMoniker": "Proyecto_Lumel\\Presenters\\HuespedPresenter.cs",
-              "ToolTip": "C:\\Users\\velas\\Desktop\\Hotel corregido\\Proyecto_Lumel\\Proyecto_Lumel\\Presenters\\HuespedPresenter.cs",
+              "ToolTip": "C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\Proyecto_Lumel\\Presenters\\HuespedPresenter.cs",
               "RelativeToolTip": "Proyecto_Lumel\\Presenters\\HuespedPresenter.cs",
               "ViewState": "AgIAAEgAAAAAAAAAAAAvwFMAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T18:43:28.484Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-12T18:43:28.484Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "FormMainMenu.cs",
-              "DocumentMoniker": "C:\\Users\\velas\\Desktop\\Hotel corregido\\Proyecto_Lumel\\Proyecto_Lumel\\FormMainMenu.cs",
+              "DocumentMoniker": "C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\Proyecto_Lumel\\FormMainMenu.cs",
               "RelativeDocumentMoniker": "Proyecto_Lumel\\FormMainMenu.cs",
-              "ToolTip": "C:\\Users\\velas\\Desktop\\Hotel corregido\\Proyecto_Lumel\\Proyecto_Lumel\\FormMainMenu.cs",
+              "ToolTip": "C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\Proyecto_Lumel\\FormMainMenu.cs",
               "RelativeToolTip": "Proyecto_Lumel\\FormMainMenu.cs",
               "ViewState": "AgIAAJEAAAAAAAAAAADgv6oAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -74,9 +72,9 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "FormMainMenu.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\velas\\Desktop\\Hotel corregido\\Proyecto_Lumel\\Proyecto_Lumel\\FormMainMenu.cs",
+              "DocumentMoniker": "C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\Proyecto_Lumel\\FormMainMenu.cs",
               "RelativeDocumentMoniker": "Proyecto_Lumel\\FormMainMenu.cs",
-              "ToolTip": "C:\\Users\\velas\\Desktop\\Hotel corregido\\Proyecto_Lumel\\Proyecto_Lumel\\FormMainMenu.cs [Dise\u00F1o]",
+              "ToolTip": "C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\Proyecto_Lumel\\FormMainMenu.cs [Dise\u00F1o]",
               "RelativeToolTip": "Proyecto_Lumel\\FormMainMenu.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-12T01:26:55.158Z",
@@ -86,9 +84,9 @@
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "FormMainMenu.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\velas\\Desktop\\Hotel corregido\\Proyecto_Lumel\\Proyecto_Lumel\\FormMainMenu.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\Proyecto_Lumel\\FormMainMenu.Designer.cs",
               "RelativeDocumentMoniker": "Proyecto_Lumel\\FormMainMenu.Designer.cs",
-              "ToolTip": "C:\\Users\\velas\\Desktop\\Hotel corregido\\Proyecto_Lumel\\Proyecto_Lumel\\FormMainMenu.Designer.cs",
+              "ToolTip": "C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\Proyecto_Lumel\\FormMainMenu.Designer.cs",
               "RelativeToolTip": "Proyecto_Lumel\\FormMainMenu.Designer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

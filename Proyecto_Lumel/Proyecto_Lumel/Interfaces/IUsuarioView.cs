@@ -7,17 +7,16 @@ using System.Windows.Forms;
 
 namespace Proyecto_Lumel.Interfaces
 {
-    public interface IHuespedView
+    public interface IUsuarioView
     {
         // Propiedades - Model Binding
-        string IdHuesped { get; set; }
+        string IdUsuario { get; set; }
         string Nombre { get; set; }
         string Apellido { get; set; }
-        string TipoDocumento { get; set; }
-        string NumeroDocumento { get; set; }
+        string Cargo { get; set; }
         string Telefono { get; set; }
         string Correo { get; set; }
-        string Direccion { get; set; }
+        string Contraseña { get; set; }
         string SearchValue { get; set; }
         bool IsEdit { get; set; }
         bool IsSuccessful { get; set; }
@@ -30,10 +29,9 @@ namespace Proyecto_Lumel.Interfaces
         event EventHandler DeleteEvent;
         event EventHandler SaveEvent;
         event EventHandler CancelEvent;
-        event EventHandler LoadAllEvent;
 
         // Métodos
-        void SetHuespedListBindingSource(BindingSource huespedList);
+        void SetUsuarioListBindingSource(BindingSource usuarioList);
         void Show();
     }
-} 
+}

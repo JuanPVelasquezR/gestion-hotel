@@ -29,6 +29,7 @@ namespace Proyecto_Lumel.Presenters
             this.view.DeleteEvent += DeleteSelectedHuesped;
             this.view.SaveEvent += SaveHuesped;
             this.view.CancelEvent += CancelAction;
+            this.view.LoadAllEvent += LoadAllHuespedes;
 
             // Establecer el binding source
             this.view.SetHuespedListBindingSource(huespedBindingSource);
@@ -37,6 +38,13 @@ namespace Proyecto_Lumel.Presenters
             LoadAllHuespedes();
         }
 
+        // Método para el evento LoadAllEvent
+        private void LoadAllHuespedes(object sender, EventArgs e)
+        {
+            LoadAllHuespedes();
+        }
+
+        // Método para llamadas directas
         private void LoadAllHuespedes()
         {
             try

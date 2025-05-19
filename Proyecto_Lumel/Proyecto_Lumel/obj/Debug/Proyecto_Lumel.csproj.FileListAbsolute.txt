@@ -24,3 +24,4 @@ C:\Users\velas\gestion-hotel\Proyecto_Lumel\Proyecto_Lumel\obj\Debug\Proyecto_Lu
 C:\Users\velas\gestion-hotel\Proyecto_Lumel\Proyecto_Lumel\obj\Debug\Proyecto.84ACDAC1.Up2Date
 C:\Users\velas\gestion-hotel\Proyecto_Lumel\Proyecto_Lumel\obj\Debug\Proyecto_Lumel.exe
 C:\Users\velas\gestion-hotel\Proyecto_Lumel\Proyecto_Lumel\obj\Debug\Proyecto_Lumel.pdb
+C:\Users\velas\gestion-hotel\Proyecto_Lumel\Proyecto_Lumel\obj\Debug\Proyecto_Lumel.Forms.FormUsuarios.resources

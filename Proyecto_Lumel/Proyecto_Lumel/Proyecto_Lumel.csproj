@@ -91,10 +91,15 @@
     </Compile>
     <Compile Include="Data\DbConnection.cs" />
     <Compile Include="Data\HuespedRepository.cs" />
+    <Compile Include="Data\UsuarioRepository.cs" />
     <Compile Include="Interfaces\IHuespedRepository.cs" />
     <Compile Include="Interfaces\IHuespedView.cs" />
+    <Compile Include="Interfaces\IUsuarioRepository.cs" />
+    <Compile Include="Interfaces\IUsuarioView.cs" />
     <Compile Include="Models\Huesped.cs" />
+    <Compile Include="Models\Usuario.cs" />
     <Compile Include="Presenters\HuespedPresenter.cs" />
+    <Compile Include="Presenters\UsuarioPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormMainMenu.resx">
@@ -102,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormHuéspedes.resx">
       <DependentUpon>FormHuéspedes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormUsuarios.resx">
+      <DependentUpon>FormUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

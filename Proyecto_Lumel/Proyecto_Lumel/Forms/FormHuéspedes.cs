@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,6 +26,12 @@ namespace Proyecto_Lumel.Forms
         {
             InitializeComponent();
             AsociarEventos();
+            
+            // Inicializar el combo box de tipo de documento
+            cboTipoDocumento.Items.Add("DNI");
+            cboTipoDocumento.Items.Add("Pasaporte");
+            cboTipoDocumento.Items.Add("Carnet de Extranjería");
+            cboTipoDocumento.SelectedIndex = 0;
             
             // Inicializar el presenter
             presenter = new HuespedPresenter(this, new HuespedRepository());
@@ -141,6 +147,7 @@ namespace Proyecto_Lumel.Forms
         public event EventHandler DeleteEvent;
         public event EventHandler SaveEvent;
         public event EventHandler CancelEvent;
+        public event EventHandler LoadAllEvent;
 
         // Métodos
         public void SetHuespedListBindingSource(BindingSource huespedList)
@@ -191,11 +198,18 @@ namespace Proyecto_Lumel.Forms
 
         private void FormHuéspedes_Load(object sender, EventArgs e)
         {
-            // Cargar tipos de documento en el ComboBox
-            cboTipoDocumento.Items.Add("DNI");
-            cboTipoDocumento.Items.Add("Pasaporte");
-            cboTipoDocumento.Items.Add("Cédula");
-            cboTipoDocumento.SelectedIndex = 0;
+            // Asegurarse de que los botones estén en el panel4
+            if (!panel4.Controls.Contains(btnNuevo))
+            {
+                panel4.Controls.Add(btnNuevo);
+                panel4.Controls.Add(btnEditar);
+                panel4.Controls.Add(btnEliminar);
+                panel4.Controls.Add(btnGuardar);
+                panel4.Controls.Add(btnCancelar);
+            }
+            
+            // Cargar datos iniciales
+            LoadAllEvent?.Invoke(this, EventArgs.Empty);
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -219,6 +233,14 @@ namespace Proyecto_Lumel.Forms
             {
                 MessageBox.Show("El número de documento es obligatorio", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtNumeroDocumento.Focus();
+                return;
+            }
+
+            // Validar formato de correo electrónico
+            if (!string.IsNullOrWhiteSpace(Correo) && !IsValidEmail(Correo))
+            {
+                MessageBox.Show("El formato del correo electrónico no es válido", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCorreo.Focus();
                 return;
             }
 
@@ -264,6 +286,19 @@ namespace Proyecto_Lumel.Forms
             {
                 MessageBox.Show("Debe seleccionar un huésped para eliminar", "Advertencia", 
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
             }
         }
     }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,6 +11,10 @@ using System.Windows.Forms;
 using System.Windows.Media;
 using FontAwesome.Sharp;
 using Proyecto_Lumel.Forms;
+using Proyecto_Lumel.Data;
+using Proyecto_Lumel.Interfaces;
+using Proyecto_Lumel.Models;
+using Proyecto_Lumel.Presenters;
 
 namespace Proyecto_Lumel
 {
@@ -114,7 +118,7 @@ namespace Proyecto_Lumel
         private void btnHabitaciones_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color3);
-            OpenChildForm(new FormHabitaciones());
+            OpenChildForm(new FormHabitacionesNuevo("administrador"));
         }
 
         private void btnHuéspedes_Click(object sender, EventArgs e)

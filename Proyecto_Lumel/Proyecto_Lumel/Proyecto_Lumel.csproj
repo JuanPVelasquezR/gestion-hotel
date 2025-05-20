@@ -59,11 +59,11 @@
     <Compile Include="FormMainMenu.Designer.cs">
       <DependentUpon>FormMainMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormHabitaciones.cs">
+    <Compile Include="Forms\FormHabitacionesNuevo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormHabitaciones.Designer.cs">
-      <DependentUpon>FormHabitaciones.cs</DependentUpon>
+    <Compile Include="Forms\FormHabitacionesNuevo.Designer.cs">
+      <DependentUpon>FormHabitacionesNuevo.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormHistorial.cs">
       <SubType>Form</SubType>
@@ -90,14 +90,19 @@
       <DependentUpon>FormUsuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\DbConnection.cs" />
+    <Compile Include="Data\HabitacionRepository.cs" />
     <Compile Include="Data\HuespedRepository.cs" />
     <Compile Include="Data\UsuarioRepository.cs" />
+    <Compile Include="Interfaces\IHabitacionRepository.cs" />
+    <Compile Include="Interfaces\IHabitacionView.cs" />
     <Compile Include="Interfaces\IHuespedRepository.cs" />
     <Compile Include="Interfaces\IHuespedView.cs" />
     <Compile Include="Interfaces\IUsuarioRepository.cs" />
     <Compile Include="Interfaces\IUsuarioView.cs" />
+    <Compile Include="Models\Habitacion.cs" />
     <Compile Include="Models\Huesped.cs" />
     <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Presenters\HabitacionPresenter.cs" />
     <Compile Include="Presenters\HuespedPresenter.cs" />
     <Compile Include="Presenters\UsuarioPresenter.cs" />
     <Compile Include="Program.cs" />

@@ -89,6 +89,18 @@
     <Compile Include="Forms\FormUsuarios.Designer.cs">
       <DependentUpon>FormUsuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormSeleccionarHuesped.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSeleccionarHuesped.Designer.cs">
+      <DependentUpon>FormSeleccionarHuesped.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormSeleccionarHabitacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSeleccionarHabitacion.Designer.cs">
+      <DependentUpon>FormSeleccionarHabitacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data\DbConnection.cs" />
     <Compile Include="Data\HabitacionRepository.cs" />
     <Compile Include="Data\HuespedRepository.cs" />
@@ -117,6 +129,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormHuéspedes.resx">
       <DependentUpon>FormHuéspedes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSeleccionarHuesped.resx">
+      <DependentUpon>FormSeleccionarHuesped.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSeleccionarHabitacion.resx">
+      <DependentUpon>FormSeleccionarHabitacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormUsuarios.resx">
       <DependentUpon>FormUsuarios.cs</DependentUpon>

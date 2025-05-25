@@ -197,5 +197,46 @@ namespace Proyecto_Lumel.Data
             }
             return huespedList;
         }
+
+        public IEnumerable<Huesped> GetByValue(string value)
+        {
+            var huespedList = new List<Huesped>();
+            using (var connection = dbConnection.GetConnection() as SqlConnection)
+            {
+                using (var command = new SqlCommand())
+                {
+                    connection.Open();
+                    command.Connection = connection;
+                    command.CommandText = "SELECT id_huesped, nombre, apellido, tipo_documento, numero_documento, " +
+                                         "telefono, correo, direccion FROM Huesped " +
+                                         "WHERE nombre LIKE @filter OR apellido LIKE @filter OR " +
+                                         "numero_documento LIKE @filter OR " +
+                                         "(nombre + ' ' + apellido) LIKE @filter " +
+                                         "ORDER BY apellido, nombre";
+
+                    command.Parameters.Add("@filter", SqlDbType.NVarChar).Value = "%" + value + "%";
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var huesped = new Huesped
+                            {
+                                IdHuesped = Convert.ToInt32(reader["id_huesped"]),
+                                Nombre = reader["nombre"].ToString(),
+                                Apellido = reader["apellido"].ToString(),
+                                TipoDocumento = reader["tipo_documento"].ToString(),
+                                NumeroDocumento = reader["numero_documento"].ToString(),
+                                Telefono = reader["telefono"] == DBNull.Value ? null : reader["telefono"].ToString(),
+                                Correo = reader["correo"] == DBNull.Value ? null : reader["correo"].ToString(),
+                                Direccion = reader["direccion"] == DBNull.Value ? null : reader["direccion"].ToString()
+                            };
+                            huespedList.Add(huesped);
+                        }
+                    }
+                }
+            }
+            return huespedList;
+        }
     }
-} 
+}

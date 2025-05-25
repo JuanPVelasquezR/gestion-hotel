@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using Proyecto_Lumel.Interfaces;
 using Proyecto_Lumel.Models;
 using Proyecto_Lumel.Data;
+using Proyecto_Lumel.Forms;
 
 namespace Proyecto_Lumel.Presenters
 {
@@ -229,14 +230,51 @@ namespace Proyecto_Lumel.Presenters
 
         private void SeleccionarHuesped(object sender, EventArgs e)
         {
-            // Este método será implementado en la vista para mostrar un formulario de selección de huésped
-            // La vista actualizará los campos IdHuesped y NombreHuesped
+            try
+            {
+                using (var form = new FormSeleccionarHuesped())
+                {
+                    var result = form.ShowDialog();
+                    if (result == DialogResult.OK && form.HuespedSeleccionado != null)
+                    {
+                        view.IdHuesped = form.HuespedSeleccionado.IdHuesped.ToString();
+                        view.NombreHuesped = form.HuespedSeleccionado.Nombre + " " + form.HuespedSeleccionado.Apellido;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                view.IsSuccessful = false;
+                view.Message = "Error al seleccionar huésped: " + ex.Message;
+                MessageBox.Show("Error al seleccionar huésped: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void SeleccionarHabitacion(object sender, EventArgs e)
         {
-            // Este método será implementado en la vista para mostrar un formulario de selección de habitación
-            // La vista actualizará los campos IdHabitacion, NumeroHabitacion, TipoHabitacion y PrecioNoche
+            try
+            {
+                using (var form = new FormSeleccionarHabitacion())
+                {
+                    var result = form.ShowDialog();
+                    if (result == DialogResult.OK && form.HabitacionSeleccionada != null)
+                    {
+                        view.IdHabitacion = form.HabitacionSeleccionada.IdHabitacion.ToString();
+                        view.NumeroHabitacion = form.HabitacionSeleccionada.Numero;
+                        view.TipoHabitacion = form.HabitacionSeleccionada.Tipo;
+                        view.PrecioNoche = form.HabitacionSeleccionada.PrecioNoche.ToString();
+                        
+                        // Calcular precio total automáticamente
+                        CalcularPrecio(sender, e);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                view.IsSuccessful = false;
+                view.Message = "Error al seleccionar habitación: " + ex.Message;
+                MessageBox.Show("Error al seleccionar habitación: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void CalcularPrecio(object sender, EventArgs e)

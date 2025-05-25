@@ -323,5 +323,55 @@ namespace Proyecto_Lumel.Data
             }
             return habitacionList;
         }
+        
+        public IEnumerable<Habitacion> GetByTipo(string tipo)
+        {
+            var habitacionList = new List<Habitacion>();
+            try
+            {
+                using (var connection = dbConnection.GetConnection() as SqlConnection)
+                {
+                    if (connection == null)
+                    {
+                        return habitacionList;
+                    }
+
+                    using (var command = new SqlCommand())
+                    {
+                        connection.Open();
+                        command.Connection = connection;
+                        command.CommandText = "SELECT id_habitacion, numero, tipo, descripcion, " +
+                                             "capacidad, precio_noche, estado FROM Habitacion " +
+                                             "WHERE tipo = @tipo " +
+                                             "ORDER BY numero";
+
+                        command.Parameters.Add("@tipo", SqlDbType.NVarChar).Value = tipo;
+
+                        using (var reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                var habitacion = new Habitacion
+                                {
+                                    IdHabitacion = Convert.ToInt32(reader["id_habitacion"]),
+                                    Numero = reader["numero"].ToString(),
+                                    Tipo = reader["tipo"].ToString(),
+                                    Descripcion = reader["descripcion"] == DBNull.Value ? null : reader["descripcion"].ToString(),
+                                    Capacidad = Convert.ToInt32(reader["capacidad"]),
+                                    PrecioNoche = Convert.ToDecimal(reader["precio_noche"]),
+                                    Estado = reader["estado"].ToString()
+                                };
+                                habitacionList.Add(habitacion);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al buscar habitaciones por tipo: {ex.Message}");
+            }
+            return habitacionList;
+        }
     }
 }

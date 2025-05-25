@@ -63,6 +63,21 @@ namespace Proyecto_Lumel.Forms
         {
             InitializeComponent();
             this.rolUsuario = rolUsuario;
+            
+            // Configurar el TabControl correctamente desde el inicio
+            // Asegurarse de que solo la pestaña de lista esté visible inicialmente
+            if (tabControl1.TabPages.Contains(tabPageReservaDetail))
+            {
+                tabControl1.TabPages.Remove(tabPageReservaDetail);
+            }
+            
+            if (!tabControl1.TabPages.Contains(tabPageReservaList))
+            {
+                tabControl1.TabPages.Add(tabPageReservaList);
+            }
+            
+            tabControl1.SelectedTab = tabPageReservaList;
+            
             AssociateAndRaiseViewEvents();
             ConfigurarControlesPorRol();
             ConfigurarComboBoxes();
@@ -85,8 +100,16 @@ namespace Proyecto_Lumel.Forms
             btnAdd.Click += delegate
             {
                 AddNewEvent?.Invoke(this, EventArgs.Empty);
-                tabControl1.TabPages.Remove(tabPageReservaList);
-                tabControl1.TabPages.Add(tabPageReservaDetail);
+                
+                // En lugar de eliminar y agregar pestañas, simplemente cambiamos la pestaña activa
+                // Primero nos aseguramos de que ambas pestañas estén en el TabControl
+                if (!tabControl1.TabPages.Contains(tabPageReservaDetail))
+                {
+                    tabControl1.TabPages.Add(tabPageReservaDetail);
+                }
+                
+                // Seleccionamos la pestaña de detalle
+                tabControl1.SelectedTab = tabPageReservaDetail;
                 tabPageReservaDetail.Text = "Agregar nueva reserva";
             };
 
@@ -94,8 +117,15 @@ namespace Proyecto_Lumel.Forms
             btnEdit.Click += delegate
             {
                 EditEvent?.Invoke(this, EventArgs.Empty);
-                tabControl1.TabPages.Remove(tabPageReservaList);
-                tabControl1.TabPages.Add(tabPageReservaDetail);
+                
+                // En lugar de eliminar y agregar pestañas, simplemente cambiamos la pestaña activa
+                if (!tabControl1.TabPages.Contains(tabPageReservaDetail))
+                {
+                    tabControl1.TabPages.Add(tabPageReservaDetail);
+                }
+                
+                // Seleccionamos la pestaña de detalle
+                tabControl1.SelectedTab = tabPageReservaDetail;
                 tabPageReservaDetail.Text = "Editar reserva";
             };
 
@@ -105,8 +135,14 @@ namespace Proyecto_Lumel.Forms
                 SaveEvent?.Invoke(this, EventArgs.Empty);
                 if (isSuccessful)
                 {
-                    tabControl1.TabPages.Remove(tabPageReservaDetail);
-                    tabControl1.TabPages.Add(tabPageReservaList);
+                    // En lugar de eliminar la pestaña, simplemente cambiamos a la pestaña de lista
+                    if (!tabControl1.TabPages.Contains(tabPageReservaList))
+                    {
+                        tabControl1.TabPages.Add(tabPageReservaList);
+                    }
+                    
+                    // Seleccionamos la pestaña de lista
+                    tabControl1.SelectedTab = tabPageReservaList;
                 }
                 MessageBox.Show(Message);
             };
@@ -115,8 +151,15 @@ namespace Proyecto_Lumel.Forms
             btnCancel.Click += delegate
             {
                 CancelEvent?.Invoke(this, EventArgs.Empty);
-                tabControl1.TabPages.Remove(tabPageReservaDetail);
-                tabControl1.TabPages.Add(tabPageReservaList);
+                
+                // En lugar de eliminar la pestaña, simplemente cambiamos a la pestaña de lista
+                if (!tabControl1.TabPages.Contains(tabPageReservaList))
+                {
+                    tabControl1.TabPages.Add(tabPageReservaList);
+                }
+                
+                // Seleccionamos la pestaña de lista
+                tabControl1.SelectedTab = tabPageReservaList;
             };
 
             // Eliminar

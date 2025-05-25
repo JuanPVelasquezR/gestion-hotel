@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Proyecto_Lumel.Forms;
 
 namespace Proyecto_Lumel
 {
@@ -16,7 +17,10 @@ namespace Proyecto_Lumel
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMenu());
+            
+            // Iniciar la aplicación con el menú principal
+            // Esto permitirá que la aplicación funcione mientras se resuelven los problemas de referencia
+            Application.Run(new FormMenu(null));
         }
     }
 }

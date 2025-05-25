@@ -15,5 +15,6 @@ namespace Proyecto_Lumel.Interfaces
         Usuario GetById(int id);
         IEnumerable<Usuario> GetAll();
         IEnumerable<Usuario> GetByFilter(string filter);
+        Usuario Authenticate(string correo, string contraseña);
     }
 }

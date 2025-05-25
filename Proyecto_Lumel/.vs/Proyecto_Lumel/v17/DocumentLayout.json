@@ -30,8 +30,20 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FormMainMenu.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\Proyecto_Lumel\\FormMainMenu.cs",
+              "RelativeDocumentMoniker": "Proyecto_Lumel\\FormMainMenu.cs",
+              "ToolTip": "C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\Proyecto_Lumel\\FormMainMenu.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Proyecto_Lumel\\FormMainMenu.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T01:26:55.158Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
@@ -67,18 +79,6 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-12T01:27:17.651Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FormMainMenu.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\Proyecto_Lumel\\FormMainMenu.cs",
-              "RelativeDocumentMoniker": "Proyecto_Lumel\\FormMainMenu.cs",
-              "ToolTip": "C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\Proyecto_Lumel\\FormMainMenu.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Proyecto_Lumel\\FormMainMenu.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T01:26:55.158Z",
-              "EditorCaption": " [Dise\u00F1o]"
             },
             {
               "$type": "Document",

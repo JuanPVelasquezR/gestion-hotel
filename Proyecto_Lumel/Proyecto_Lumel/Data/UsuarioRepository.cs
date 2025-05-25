@@ -182,7 +182,7 @@ namespace Proyecto_Lumel.Data
                                 Apellido = reader["apellido"].ToString(),
                                 Cargo = reader["cargo"].ToString(),
                                 Telefono = reader["telefono"] == DBNull.Value ? null : reader["telefono"].ToString(),
-                                Correo = reader["correo"] == DBNull.Value ? null : reader["correo"].ToString(),
+                                Correo = reader["correo"].ToString(),
                                 Contraseña = reader["contrasena"].ToString()
                             };
                             usuarioList.Add(usuario);
@@ -191,6 +191,43 @@ namespace Proyecto_Lumel.Data
                 }
             }
             return usuarioList;
+        }
+
+        public Usuario Authenticate(string correo, string contraseña)
+        {
+            Usuario usuario = null;
+            using (var connection = dbConnection.GetConnection() as SqlConnection)
+            {
+                using (var command = new SqlCommand())
+                {
+                    connection.Open();
+                    command.Connection = connection;
+                    command.CommandText = "SELECT id_usuario, nombre, apellido, cargo, " +
+                                          "telefono, correo, contrasena FROM Usuario " +
+                                          "WHERE correo = @correo AND contrasena = @contrasena";
+
+                    command.Parameters.Add("@correo", SqlDbType.NVarChar).Value = correo;
+                    command.Parameters.Add("@contrasena", SqlDbType.NVarChar).Value = contraseña;
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            usuario = new Usuario
+                            {
+                                IdUsuario = Convert.ToInt32(reader["id_usuario"]),
+                                Nombre = reader["nombre"].ToString(),
+                                Apellido = reader["apellido"].ToString(),
+                                Cargo = reader["cargo"].ToString(),
+                                Telefono = reader["telefono"] == DBNull.Value ? null : reader["telefono"].ToString(),
+                                Correo = reader["correo"].ToString(),
+                                Contraseña = reader["contrasena"].ToString()
+                            };
+                        }
+                    }
+                }
+            }
+            return usuario;
         }
     }
 }

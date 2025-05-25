@@ -23,7 +23,9 @@ namespace Proyecto_Lumel
         private IconButton currentBtn;
         private Panel leftBorderBtn;
         private Form currentChildForm;
-        public FormMenu()
+        private Models.Usuario usuarioActual;
+        
+        public FormMenu(Models.Usuario usuario)
         {
             InitializeComponent();
             leftBorderBtn = new Panel();
@@ -33,6 +35,133 @@ namespace Proyecto_Lumel
             this.ControlBox = false;
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+            
+            // Si el usuario es null, mostrar el diálogo de login
+            if (usuario == null)
+            {
+                // Mostrar el diálogo de login
+                usuario = MostrarDialogoLogin();
+                
+                // Si el usuario sigue siendo null después del login, usar un usuario temporal
+                if (usuario == null)
+                {
+                    usuario = new Models.Usuario
+                    {
+                        IdUsuario = 1,
+                        Nombre = "Admin",
+                        Apellido = "Temporal",
+                        Cargo = "Administrador",
+                        Correo = "admin@hotel.com"
+                    };
+                }
+            }
+            
+            // Guardar el usuario actual
+            usuarioActual = usuario;
+            
+            // No es necesario guardar el usuario en una clase estática
+            // ya que lo estamos manejando directamente en esta clase
+            
+            // Configurar permisos según el rol del usuario
+            ConfigurarPermisos();
+            
+            // Mostrar información del usuario en la barra de título
+            MostrarInfoUsuario();
+        }
+        
+        /// <summary>
+        /// Muestra un diálogo de login y devuelve el usuario autenticado
+        /// </summary>
+        /// <returns>Usuario autenticado o null si el login falla</returns>
+        private Models.Usuario MostrarDialogoLogin()
+        {
+            // Crear un formulario de login personalizado
+            using (var loginForm = new Form())
+            {
+                loginForm.Text = "Iniciar Sesión";
+                loginForm.Size = new Size(400, 250);
+                loginForm.StartPosition = FormStartPosition.CenterScreen;
+                loginForm.FormBorderStyle = FormBorderStyle.FixedDialog;
+                loginForm.MaximizeBox = false;
+                loginForm.MinimizeBox = false;
+                
+                // Crear controles para el formulario
+                var lblUsuario = new Label { Text = "Usuario:", Location = new Point(50, 30), AutoSize = true };
+                var txtUsuario = new TextBox { Location = new Point(150, 30), Size = new Size(200, 20) };
+                
+                var lblPassword = new Label { Text = "Contraseña:", Location = new Point(50, 70), AutoSize = true };
+                var txtPassword = new TextBox { Location = new Point(150, 70), Size = new Size(200, 20), UseSystemPasswordChar = true };
+                
+                var btnLogin = new Button { Text = "Ingresar", Location = new Point(150, 120), Size = new Size(100, 30) };
+                var btnCancel = new Button { Text = "Cancelar", Location = new Point(260, 120), Size = new Size(100, 30) };
+                
+                // Variable para almacenar el resultado del login
+                Models.Usuario usuarioAutenticado = null;
+                
+                // Manejar el evento de clic del botón de login
+                btnLogin.Click += (sender, e) =>
+                {
+                    string correo = txtUsuario.Text.Trim();
+                    string contrasena = txtPassword.Text.Trim();
+                    
+                    // Validar que se hayan ingresado datos
+                    if (string.IsNullOrEmpty(correo) || string.IsNullOrEmpty(contrasena))
+                    {
+                        MessageBox.Show("Por favor, ingrese su correo y contraseña.", 
+                            "Datos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    
+                    try
+                    {
+                        // Crear una instancia del repositorio de usuarios
+                        var usuarioRepository = new Data.UsuarioRepository();
+                        
+                        // Autenticar usuario
+                        var usuario = usuarioRepository.Authenticate(correo, contrasena);
+                        
+                        if (usuario != null)
+                        {
+                            usuarioAutenticado = usuario;
+                            loginForm.DialogResult = DialogResult.OK;
+                            loginForm.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Correo o contraseña incorrectos.", 
+                                "Error de autenticación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al intentar iniciar sesión: {ex.Message}", 
+                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                };
+                
+                // Manejar el evento de clic del botón de cancelar
+                btnCancel.Click += (sender, e) =>
+                {
+                    loginForm.DialogResult = DialogResult.Cancel;
+                    loginForm.Close();
+                };
+                
+                // Agregar los controles al formulario
+                loginForm.Controls.Add(lblUsuario);
+                loginForm.Controls.Add(txtUsuario);
+                loginForm.Controls.Add(lblPassword);
+                loginForm.Controls.Add(txtPassword);
+                loginForm.Controls.Add(btnLogin);
+                loginForm.Controls.Add(btnCancel);
+                
+                // Mostrar el formulario como diálogo
+                if (loginForm.ShowDialog() == DialogResult.OK)
+                {
+                    return usuarioAutenticado;
+                }
+                
+                return null;
+            }
         }
 
 
@@ -112,13 +241,19 @@ namespace Proyecto_Lumel
         private void btnHistorial_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color2);
+            // Pasar el rol del usuario actual para configurar permisos en el formulario
+            string rol = usuarioActual.Cargo.ToLower() == "administrador" ? "administrador" : "empleado";
+            // Abrir el formulario de historial
+            // Nota: En una implementación futura, se debería modificar FormHistorial para que respete los permisos
             OpenChildForm(new FormHistorial());
         }
 
         private void btnHabitaciones_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color3);
-            OpenChildForm(new FormHabitacionesNuevo("administrador"));
+            // Pasar el rol del usuario actual para configurar permisos en el formulario
+            string rol = usuarioActual.Cargo.ToLower() == "administrador" ? "administrador" : "empleado";
+            OpenChildForm(new FormHabitacionesNuevo(rol));
         }
 
         private void btnHuéspedes_Click(object sender, EventArgs e)
@@ -129,8 +264,17 @@ namespace Proyecto_Lumel
 
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender, RGBColors.color5);
-            OpenChildForm(new FormUsuarios());
+            // Solo los administradores pueden acceder a la gestión de usuarios
+            if (usuarioActual.Cargo.ToLower() == "administrador")
+            {
+                ActivateButton(sender, RGBColors.color5);
+                OpenChildForm(new FormUsuarios());
+            }
+            else
+            {
+                MessageBox.Show("No tiene permisos para acceder a esta sección.", 
+                    "Acceso denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -172,7 +316,19 @@ namespace Proyecto_Lumel
         }
         private void btnExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            // Preguntar si desea cerrar sesión o salir de la aplicación
+            DialogResult result = MessageBox.Show("¿Desea cerrar sesión o salir de la aplicación?", 
+                "Cerrar", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            
+            if (result == DialogResult.Yes) // Cerrar sesión
+            {
+                CerrarSesion();
+            }
+            else if (result == DialogResult.No) // Salir de la aplicación
+            {
+                Application.Exit();
+            }
+            // Si es Cancel, no hacer nada
         }
         private void btnMaximize_Click(object sender, EventArgs e)
         {
@@ -184,6 +340,84 @@ namespace Proyecto_Lumel
         private void btnMinimize_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
+        }
+        
+        /// <summary>
+        /// Configura los permisos de acceso según el rol del usuario
+        /// </summary>
+        private void ConfigurarPermisos()
+        {
+            // Verificar que el usuario no sea null antes de configurar permisos
+            if (usuarioActual != null)
+            {
+                // Si es empleado, deshabilitar el botón de usuarios
+                if (usuarioActual.Cargo.ToLower() != "administrador")
+                {
+                    btnUsuarios.Visible = false;
+                }
+                
+                // Configurar permisos adicionales para empleados
+                if (usuarioActual.Cargo.ToLower() == "empleado")
+                {
+                    // Los empleados solo tienen permisos de lectura en habitaciones e historial
+                    // Esta funcionalidad se implementará en los formularios correspondientes
+                }
+            }
+        }
+        
+        /// <summary>
+        /// Muestra la información del usuario actual en la barra de título
+        /// </summary>
+        private void MostrarInfoUsuario()
+        {
+            if (usuarioActual != null)
+            {
+                string rolText = usuarioActual.Cargo.ToLower() == "administrador" ? "Administrador" : "Empleado";
+                lblTitleChildForm.Text = $"Bienvenido, {usuarioActual.NombreCompleto} - {rolText}";
+            }
+            else
+            {
+                lblTitleChildForm.Text = "Sistema de Gestión Hotelera";
+            }
+        }
+        
+        /// <summary>
+        /// Cierra la sesión actual y muestra el diálogo de login
+        /// </summary>
+        private void CerrarSesion()
+        {
+            // Informar al usuario que se cerró la sesión
+            MessageBox.Show("Se ha cerrado la sesión correctamente.", "Sesión cerrada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+            // Limpiar la referencia al usuario actual
+            usuarioActual = null;
+            
+            // Mostrar el diálogo de login
+            var nuevoUsuario = MostrarDialogoLogin();
+            
+            if (nuevoUsuario != null)
+            {
+                // Guardar el nuevo usuario
+                usuarioActual = nuevoUsuario;
+                
+                // Configurar permisos según el rol del usuario
+                ConfigurarPermisos();
+                
+                // Mostrar información del usuario en la barra de título
+                MostrarInfoUsuario();
+                
+                // Cerrar cualquier formulario hijo abierto
+                if (currentChildForm != null)
+                {
+                    currentChildForm.Close();
+                    Reset();
+                }
+            }
+            else
+            {
+                // Si el usuario canceló el login, cerrar la aplicación
+                Application.Exit();
+            }
         }
     }
 }

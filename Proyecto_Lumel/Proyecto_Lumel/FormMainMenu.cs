@@ -78,25 +78,135 @@ namespace Proyecto_Lumel
             // Crear un formulario de login personalizado
             using (var loginForm = new Form())
             {
+                // Configuración básica del formulario
                 loginForm.Text = "Iniciar Sesión";
-                loginForm.Size = new Size(400, 250);
+                loginForm.Size = new Size(630, 330); // Tamaño exacto como el FormLogin original
                 loginForm.StartPosition = FormStartPosition.CenterScreen;
-                loginForm.FormBorderStyle = FormBorderStyle.FixedDialog;
-                loginForm.MaximizeBox = false;
-                loginForm.MinimizeBox = false;
+                loginForm.FormBorderStyle = FormBorderStyle.None; // Sin bordes para un diseño moderno
+                loginForm.BackColor = System.Drawing.Color.White;
                 
-                // Crear controles para el formulario
-                var lblUsuario = new Label { Text = "Usuario:", Location = new Point(50, 30), AutoSize = true };
-                var txtUsuario = new TextBox { Location = new Point(150, 30), Size = new Size(200, 20) };
+                // Panel izquierdo con color de fondo y logo (igual que en el diseño original)
+                var panelIzquierdo = new Panel
+                {
+                    Dock = DockStyle.Left,
+                    Width = 250,
+                    BackColor = System.Drawing.Color.FromArgb(31, 30, 68) // Color corporativo exacto
+                };
                 
-                var lblPassword = new Label { Text = "Contraseña:", Location = new Point(50, 70), AutoSize = true };
-                var txtPassword = new TextBox { Location = new Point(150, 70), Size = new Size(200, 20), UseSystemPasswordChar = true };
+                // Logo o imagen del hotel (usando FontAwesome para simular un logo si no hay imagen)
+                var pictureLogo = new FontAwesome.Sharp.IconPictureBox
+                {
+                    IconChar = FontAwesome.Sharp.IconChar.Hotel,
+                    IconSize = 100,
+                    IconColor = System.Drawing.Color.White,
+                    BackColor = System.Drawing.Color.FromArgb(31, 30, 68),
+                    Size = new Size(150, 150),
+                    Location = new Point(50, 90),
+                    SizeMode = PictureBoxSizeMode.CenterImage
+                };
                 
-                var btnLogin = new Button { Text = "Ingresar", Location = new Point(150, 120), Size = new Size(100, 30) };
-                var btnCancel = new Button { Text = "Cancelar", Location = new Point(260, 120), Size = new Size(100, 30) };
+                // Título del login con el estilo exacto del proyecto
+                var lblTitulo = new Label
+                {
+                    Text = "INICIAR SESIÓN",
+                    Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0))),
+                    ForeColor = System.Drawing.Color.FromArgb(31, 30, 68),
+                    AutoSize = true,
+                    Location = new Point(370, 40)
+                };
+                
+                // Etiqueta y campo de usuario con estilo consistente
+                var lblUsuario = new Label
+                {
+                    Text = "Correo",
+                    Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0))),
+                    Location = new Point(280, 100),
+                    AutoSize = true
+                };
+                
+                var txtUsuario = new TextBox
+                {
+                    Location = new Point(280, 120),
+                    Size = new Size(300, 23),
+                    Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0))),
+                    BorderStyle = BorderStyle.FixedSingle // Borde fino y elegante
+                };
+                
+                // Etiqueta y campo de contraseña con estilo consistente
+                var lblPassword = new Label
+                {
+                    Text = "Contraseña",
+                    Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0))),
+                    Location = new Point(280, 160),
+                    AutoSize = true
+                };
+                
+                var txtPassword = new TextBox
+                {
+                    Location = new Point(280, 180),
+                    Size = new Size(300, 23),
+                    Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0))),
+                    UseSystemPasswordChar = true,
+                    BorderStyle = BorderStyle.FixedSingle // Borde fino y elegante
+                };
+                
+                // Botón para mostrar/ocultar contraseña usando FontAwesome para consistencia visual
+                var btnMostrarContrasena = new FontAwesome.Sharp.IconButton
+                {
+                    IconChar = FontAwesome.Sharp.IconChar.Eye,
+                    IconColor = System.Drawing.Color.FromArgb(31, 30, 68),
+                    IconFont = FontAwesome.Sharp.IconFont.Auto,
+                    IconSize = 25,
+                    FlatStyle = FlatStyle.Flat,
+                    Location = new Point(586, 180),
+                    Size = new Size(30, 23),
+                    Cursor = Cursors.Hand,
+                    Text = "",
+                    UseVisualStyleBackColor = true
+                };
+                btnMostrarContrasena.FlatAppearance.BorderSize = 0;
+                
+                // Botón de ingresar con estilo exacto del proyecto
+                var btnLogin = new Button
+                {
+                    Text = "Ingresar",
+                    Location = new Point(280, 230),
+                    Size = new Size(140, 35),
+                    FlatStyle = FlatStyle.Flat,
+                    BackColor = System.Drawing.Color.FromArgb(31, 30, 68),
+                    ForeColor = System.Drawing.Color.White,
+                    Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0))),
+                    Cursor = Cursors.Hand
+                };
+                btnLogin.FlatAppearance.BorderSize = 0;
+                
+                // Botón de cancelar con estilo exacto del proyecto
+                var btnCancel = new Button
+                {
+                    Text = "Cancelar",
+                    Location = new Point(440, 230),
+                    Size = new Size(140, 35),
+                    FlatStyle = FlatStyle.Flat,
+                    BackColor = System.Drawing.Color.FromArgb(249, 88, 155), // Color de acento exacto
+                    ForeColor = System.Drawing.Color.White,
+                    Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0))),
+                    Cursor = Cursors.Hand
+                };
+                btnCancel.FlatAppearance.BorderSize = 0;
                 
                 // Variable para almacenar el resultado del login
                 Models.Usuario usuarioAutenticado = null;
+                
+                // Manejar el evento de clic del botón para mostrar/ocultar contraseña
+                btnMostrarContrasena.Click += (sender, e) =>
+                {
+                    // Cambiar la visibilidad de la contraseña
+                    txtPassword.UseSystemPasswordChar = !txtPassword.UseSystemPasswordChar;
+                    
+                    // Cambiar el icono del botón según la visibilidad
+                    btnMostrarContrasena.IconChar = txtPassword.UseSystemPasswordChar ? 
+                        FontAwesome.Sharp.IconChar.Eye : FontAwesome.Sharp.IconChar.EyeSlash;
+                };
                 
                 // Manejar el evento de clic del botón de login
                 btnLogin.Click += (sender, e) =>
@@ -147,12 +257,31 @@ namespace Proyecto_Lumel
                 };
                 
                 // Agregar los controles al formulario
+                panelIzquierdo.Controls.Add(pictureLogo);
+                loginForm.Controls.Add(panelIzquierdo);
+                loginForm.Controls.Add(lblTitulo);
                 loginForm.Controls.Add(lblUsuario);
                 loginForm.Controls.Add(txtUsuario);
                 loginForm.Controls.Add(lblPassword);
                 loginForm.Controls.Add(txtPassword);
+                loginForm.Controls.Add(btnMostrarContrasena);
                 loginForm.Controls.Add(btnLogin);
                 loginForm.Controls.Add(btnCancel);
+                
+                // Permitir mover el formulario sin borde
+                loginForm.MouseDown += (sender, e) =>
+                {
+                    if (e.Button == MouseButtons.Left)
+                    {
+                        const int WM_NCLBUTTONDOWN = 0xA1;
+                        const int HT_CAPTION = 0x2;
+                        
+                        // Liberar la captura del mouse
+                        ReleaseCapture();
+                        // Enviar mensaje para mover la ventana
+                        SendMessage(loginForm.Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+                    }
+                };
                 
                 // Mostrar el formulario como diálogo
                 if (loginForm.ShowDialog() == DialogResult.OK)

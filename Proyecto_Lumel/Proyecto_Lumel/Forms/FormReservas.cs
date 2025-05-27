@@ -251,31 +251,65 @@ namespace Proyecto_Lumel.Forms
         }
 
         // Métodos
+        // Label para mostrar mensaje cuando no hay datos
+        private Label _noDataLabel;
+        
+        // Método para mostrar u ocultar el mensaje de "no hay datos"
+        private void MostrarMensajeNoHayDatos(bool mostrar)
+        {
+            // Si el label no existe, crearlo
+            if (_noDataLabel == null)
+            {
+                _noDataLabel = new Label();
+                _noDataLabel.Name = "lblNoData";
+                _noDataLabel.Text = "No hay reservas para mostrar. Utilice los filtros o cree una nueva reserva.";
+                _noDataLabel.ForeColor = Color.Gray;
+                _noDataLabel.Font = new Font(dataGridView1.Font.FontFamily, 10, FontStyle.Italic);
+                _noDataLabel.TextAlign = ContentAlignment.MiddleCenter;
+                _noDataLabel.Dock = DockStyle.None;
+                _noDataLabel.AutoSize = false;
+                _noDataLabel.Size = new Size(dataGridView1.Width - 40, 30);
+                _noDataLabel.Location = new Point(
+                    dataGridView1.Location.X + 20,
+                    dataGridView1.Location.Y + (dataGridView1.Height / 2) - 15);
+                
+                // Agregar el Label al formulario
+                tabPageReservaList.Controls.Add(_noDataLabel);
+                _noDataLabel.BringToFront();
+            }
+            
+            // Mostrar u ocultar el label según corresponda
+            _noDataLabel.Visible = mostrar;
+        }
+        
         public void SetReservaListBindingSource(BindingSource reservaList)
         {
             dataGridView1.DataSource = reservaList;
             
-            if (reservaList != null && reservaList.Count > 0)
+            // Mostrar u ocultar el mensaje de "no hay datos"
+            bool noHayDatos = (dataGridView1.Rows.Count == 0);
+            MostrarMensajeNoHayDatos(noHayDatos);
+            
+            // Configurar las columnas del DataGridView
+            if (!noHayDatos)
             {
                 try
                 {
-                    // Configurar las columnas del DataGridView
+                    // Ocultar columnas que no queremos mostrar
                     if (dataGridView1.Columns.Count > 0)
                     {
                         dataGridView1.Columns[0].HeaderText = "ID";
-                        dataGridView1.Columns[0].Visible = false;
+                        dataGridView1.Columns[0].Width = 50;
                     }
                     
                     if (dataGridView1.Columns.Count > 1)
                     {
-                        dataGridView1.Columns[1].HeaderText = "ID Huésped";
-                        dataGridView1.Columns[1].Visible = false;
+                        dataGridView1.Columns[1].Visible = false; // IdHuesped
                     }
                     
                     if (dataGridView1.Columns.Count > 2)
                     {
-                        dataGridView1.Columns[2].HeaderText = "ID Habitación";
-                        dataGridView1.Columns[2].Visible = false;
+                        dataGridView1.Columns[2].Visible = false; // IdHabitacion
                     }
                     
                     if (dataGridView1.Columns.Count > 3)
@@ -343,20 +377,112 @@ namespace Proyecto_Lumel.Forms
                         dataGridView1.Columns[12].DefaultCellStyle.Format = "C2";
                     }
 
-                    // Colorear las filas según el estado
+                    // Permitir ordenar por columnas
+                    dataGridView1.Sort(dataGridView1.Columns[3], ListSortDirection.Descending); // Ordenar por fecha de entrada por defecto
+                    
+                    // Mejorar la apariencia del DataGridView para el historial
+                    dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
+                    dataGridView1.EnableHeadersVisualStyles = false;
+                    dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(31, 30, 68);
+                    dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                    dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.Font, FontStyle.Bold);
+                    dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                    dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                    
+                    // Colorear las filas según el estado con colores más atractivos
                     dataGridView1.CellFormatting += (s, e) =>
                     {
-                        if (e.ColumnIndex == 6 && e.Value != null) // Columna de Estado
+                        if (e.RowIndex >= 0) // Asegurarse de que no es el encabezado
                         {
-                            string estado = e.Value.ToString();
-                            if (estado == "Pendiente")
-                                e.CellStyle.BackColor = Color.LightYellow;
-                            else if (estado == "Confirmada")
-                                e.CellStyle.BackColor = Color.LightGreen;
-                            else if (estado == "Cancelada")
-                                e.CellStyle.BackColor = Color.LightCoral;
-                            else if (estado == "Completada")
-                                e.CellStyle.BackColor = Color.LightBlue;
+                            if (e.ColumnIndex == 6 && e.Value != null) // Columna de Estado
+                            {
+                                string estado = e.Value.ToString();
+                                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                                
+                                // Aplicar colores a toda la fila según el estado
+                                switch (estado)
+                                {
+                                    case "Pendiente":
+                                        e.CellStyle.BackColor = Color.FromArgb(255, 253, 205); // Amarillo claro
+                                        e.CellStyle.ForeColor = Color.FromArgb(150, 125, 0); // Texto oscuro
+                                        e.CellStyle.Font = new Font(dataGridView1.Font, FontStyle.Bold);
+                                        break;
+                                    case "Confirmada":
+                                        e.CellStyle.BackColor = Color.FromArgb(200, 250, 200); // Verde claro
+                                        e.CellStyle.ForeColor = Color.FromArgb(0, 100, 0); // Texto verde oscuro
+                                        e.CellStyle.Font = new Font(dataGridView1.Font, FontStyle.Bold);
+                                        break;
+                                    case "Cancelada":
+                                        e.CellStyle.BackColor = Color.FromArgb(255, 200, 200); // Rojo claro
+                                        e.CellStyle.ForeColor = Color.FromArgb(150, 0, 0); // Texto rojo oscuro
+                                        e.CellStyle.Font = new Font(dataGridView1.Font, FontStyle.Bold);
+                                        break;
+                                    case "Completada":
+                                        e.CellStyle.BackColor = Color.FromArgb(200, 220, 255); // Azul claro
+                                        e.CellStyle.ForeColor = Color.FromArgb(0, 0, 150); // Texto azul oscuro
+                                        e.CellStyle.Font = new Font(dataGridView1.Font, FontStyle.Bold);
+                                        break;
+                                }
+                            }
+                            
+                            // Resaltar fechas próximas (entradas en los próximos 3 días)
+                            if (e.ColumnIndex == 3 && dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString() == "Confirmada")
+                            {
+                                if (e.Value != null && e.Value != DBNull.Value)
+                                {
+                                    DateTime fechaEntrada = Convert.ToDateTime(e.Value);
+                                    DateTime hoy = DateTime.Today;
+                                    
+                                    if (fechaEntrada >= hoy && fechaEntrada <= hoy.AddDays(3))
+                                    {
+                                        // Resaltar entradas próximas
+                                        e.CellStyle.BackColor = Color.FromArgb(255, 200, 100); // Naranja claro
+                                        e.CellStyle.ForeColor = Color.FromArgb(150, 75, 0); // Texto naranja oscuro
+                                        e.CellStyle.Font = new Font(dataGridView1.Font, FontStyle.Bold);
+                                    }
+                                }
+                            }
+                        }
+                    };
+                    
+                    // Agregar tooltip para mostrar información detallada al pasar el mouse
+                    ToolTip toolTip = new ToolTip();
+                    dataGridView1.CellMouseEnter += (s, e) =>
+                    {
+                        if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+                        {
+                            DataGridViewCell cell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                            if (cell.Value != null && !string.IsNullOrEmpty(cell.Value.ToString()))
+                            {
+                                // Para columnas específicas, mostrar información adicional
+                                if (e.ColumnIndex == 6) // Estado
+                                {
+                                    string estado = cell.Value.ToString();
+                                    string mensaje = "";
+                                    
+                                    switch (estado)
+                                    {
+                                        case "Pendiente":
+                                            mensaje = "Reserva pendiente de confirmación";
+                                            break;
+                                        case "Confirmada":
+                                            mensaje = "Reserva confirmada y lista para check-in";
+                                            break;
+                                        case "Cancelada":
+                                            mensaje = "Reserva cancelada";
+                                            break;
+                                        case "Completada":
+                                            mensaje = "Reserva finalizada con éxito";
+                                            break;
+                                    }
+                                    
+                                    toolTip.SetToolTip(dataGridView1, mensaje);
+                                }
+                                else
+                                {
+                                    toolTip.SetToolTip(dataGridView1, cell.Value.ToString());
+                                }
+                            }
                         }
                     };
                 }
@@ -370,6 +496,7 @@ namespace Proyecto_Lumel.Forms
             {
                 // No mostrar mensaje cuando no hay datos
                 Console.WriteLine("No hay datos para mostrar en la lista de reservas.");
+                // El mensaje visual se maneja en MostrarMensajeNoHayDatos
             }
         }
 

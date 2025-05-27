@@ -3,32 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\proyecto_lumel\\formmainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|c:\\users\\velas\\gestion-hotel\\proyecto_lumel\\proyecto_lumel\\formmainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|solutionrelative:proyecto_lumel\\formmainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|c:\\users\\velas\\gestion-hotel\\proyecto_lumel\\proyecto_lumel\\forms\\formreservas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|solutionrelative:proyecto_lumel\\forms\\formreservas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|c:\\users\\velas\\gestion-hotel\\proyecto_lumel\\proyecto_lumel\\forms\\formlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|solutionrelative:proyecto_lumel\\forms\\formlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\proyecto_lumel\\forms\\formusuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|solutionrelative:proyecto_lumel\\forms\\formusuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\proyecto_lumel\\forms\\formhu\u00E9spedes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|solutionrelative:proyecto_lumel\\forms\\formhu\u00E9spedes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\proyecto_lumel\\forms\\formhabitacionesnuevo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|solutionrelative:proyecto_lumel\\forms\\formhabitacionesnuevo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\proyecto_lumel\\forms\\formhistorial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|solutionrelative:proyecto_lumel\\forms\\formhistorial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\proyecto_lumel\\forms\\formhabitacionesnuevo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|solutionrelative:proyecto_lumel\\forms\\formhabitacionesnuevo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\proyecto_lumel\\forms\\formusuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|solutionrelative:proyecto_lumel\\forms\\formusuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\proyecto_lumel\\forms\\formreservas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|solutionrelative:proyecto_lumel\\forms\\formreservas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\proyecto_lumel\\forms\\formlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|solutionrelative:proyecto_lumel\\forms\\formlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\proyecto_lumel\\forms\\formhu\u00E9spedes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|solutionrelative:proyecto_lumel\\forms\\formhu\u00E9spedes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1C1F968C-F6D3-413A-9A75-0FDA9AF376E0}|Proyecto_Lumel\\Proyecto_Lumel.csproj|C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\proyecto_lumel\\formmainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -54,19 +54,18 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "FormLogin.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\Proyecto_Lumel\\Forms\\FormLogin.cs",
               "RelativeDocumentMoniker": "Proyecto_Lumel\\Forms\\FormLogin.cs",
               "ToolTip": "C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\Proyecto_Lumel\\Forms\\FormLogin.cs [Dise\u00F1o]",
               "RelativeToolTip": "Proyecto_Lumel\\Forms\\FormLogin.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-27T13:54:23.199Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2025-05-27T13:54:23.199Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "FormReservas.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\Proyecto_Lumel\\Forms\\FormReservas.cs",
               "RelativeDocumentMoniker": "Proyecto_Lumel\\Forms\\FormReservas.cs",
@@ -90,25 +89,27 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "FormHistorial.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\Proyecto_Lumel\\Forms\\FormHistorial.cs",
               "RelativeDocumentMoniker": "Proyecto_Lumel\\Forms\\FormHistorial.cs",
               "ToolTip": "C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\Proyecto_Lumel\\Forms\\FormHistorial.cs [Dise\u00F1o]",
               "RelativeToolTip": "Proyecto_Lumel\\Forms\\FormHistorial.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-25T18:43:02.636Z"
+              "WhenOpened": "2025-05-25T18:43:02.636Z",
+              "EditorCaption": " [Dise\u00F1o]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "FormHabitacionesNuevo.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\Proyecto_Lumel\\Forms\\FormHabitacionesNuevo.cs",
               "RelativeDocumentMoniker": "Proyecto_Lumel\\Forms\\FormHabitacionesNuevo.cs",
               "ToolTip": "C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\Proyecto_Lumel\\Forms\\FormHabitacionesNuevo.cs [Dise\u00F1o]",
               "RelativeToolTip": "Proyecto_Lumel\\Forms\\FormHabitacionesNuevo.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-25T18:43:01.08Z"
+              "WhenOpened": "2025-05-25T18:43:01.08Z",
+              "EditorCaption": " [Dise\u00F1o]"
             },
             {
               "$type": "Document",
@@ -124,7 +125,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "FormHu\u00E9spedes.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\velas\\gestion-hotel\\Proyecto_Lumel\\Proyecto_Lumel\\Forms\\FormHu\u00E9spedes.cs",
               "RelativeDocumentMoniker": "Proyecto_Lumel\\Forms\\FormHu\u00E9spedes.cs",
@@ -155,8 +156,7 @@
               "RelativeToolTip": "Proyecto_Lumel\\FormMainMenu.cs",
               "ViewState": "AgIAAJEAAAAAAAAAAADgv6oAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T01:27:17.651Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-12T01:27:17.651Z"
             },
             {
               "$type": "Document",

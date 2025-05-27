@@ -36,24 +36,13 @@ namespace Proyecto_Lumel
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
             
-            // Si el usuario es null, mostrar el diálogo de login
+            // Si el usuario es null, no permitir continuar
             if (usuario == null)
             {
-                // Mostrar el diálogo de login
-                usuario = MostrarDialogoLogin();
-                
-                // Si el usuario sigue siendo null después del login, usar un usuario temporal
-                if (usuario == null)
-                {
-                    usuario = new Models.Usuario
-                    {
-                        IdUsuario = 1,
-                        Nombre = "Admin",
-                        Apellido = "Temporal",
-                        Cargo = "Administrador",
-                        Correo = "admin@hotel.com"
-                    };
-                }
+                // No permitir la creación del formulario sin un usuario válido
+                MessageBox.Show("No se ha proporcionado un usuario válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
             }
             
             // Guardar el usuario actual

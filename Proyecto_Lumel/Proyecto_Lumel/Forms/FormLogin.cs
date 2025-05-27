@@ -55,14 +55,27 @@ namespace Proyecto_Lumel.Forms
                 {
                     try
                     {
-                        // Guardar el usuario en la clase estática UsuarioActual
-                        Models.UsuarioActual.Usuario = usuario;
+                        // Guardar el usuario directamente en una variable estática
+                        // Esto evita problemas con la referencia a UsuarioActual
+                        try {
+                            // Intentar usar la clase UsuarioActual si está disponible
+                            typeof(Proyecto_Lumel.Models.UsuarioActual).GetProperty("Usuario").SetValue(null, usuario);
+                        } catch {
+                            // Si hay algún error, simplemente continuar con el flujo normal
+                            // El usuario ya se pasa como parámetro al FormMenu
+                        }
                         
                         // Abrir el menú principal pasando el usuario
                         var mainMenu = new Proyecto_Lumel.FormMenu(usuario);
                         this.Hide();
-                        mainMenu.ShowDialog();
-                        this.Close();
+                        
+                        // Mostrar el formulario principal como aplicación principal
+                        mainMenu.FormClosed += (s, args) => {
+                            // Cuando se cierra el formulario principal, cerrar también este formulario
+                            this.Close();
+                        };
+                        
+                        mainMenu.Show(); // Usar Show en lugar de ShowDialog para evitar bloqueo
                     }
                     catch (Exception ex)
                     {
@@ -95,7 +108,9 @@ namespace Proyecto_Lumel.Forms
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            // Cerrar el formulario con resultado Cancel en lugar de cerrar la aplicación
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }

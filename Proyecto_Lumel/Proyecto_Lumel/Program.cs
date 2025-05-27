@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Proyecto_Lumel.Forms;
+using Proyecto_Lumel.Models;
 
 namespace Proyecto_Lumel
 {
@@ -18,9 +19,9 @@ namespace Proyecto_Lumel
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             
-            // Iniciar la aplicación con el menú principal
-            // Esto permitirá que la aplicación funcione mientras se resuelven los problemas de referencia
-            Application.Run(new FormMenu(null));
+            // Iniciar la aplicación con el formulario de login
+            var loginForm = new Proyecto_Lumel.Forms.FormLogin();
+            Application.Run(loginForm);
         }
     }
 }

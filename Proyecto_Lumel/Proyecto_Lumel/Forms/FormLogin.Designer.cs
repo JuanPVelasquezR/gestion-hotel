@@ -54,7 +54,8 @@ namespace Proyecto_Lumel.Forms
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Proyecto_Lumel.Properties.Resources.hotel_logo;
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.pictureBox1.Image = global::Proyecto_Lumel.Properties.Resources.Screenshot_2025_05_11_204549;
             this.pictureBox1.Location = new System.Drawing.Point(50, 90);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(150, 150);
@@ -69,7 +70,7 @@ namespace Proyecto_Lumel.Forms
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.label1.Location = new System.Drawing.Point(370, 40);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 25);
+            this.label1.Size = new System.Drawing.Size(164, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "INICIAR SESIÓN";
             // 

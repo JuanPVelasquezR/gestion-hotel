@@ -27,3 +27,4 @@ C:\Users\velas\gestion-hotel\Proyecto_Lumel\Proyecto_Lumel\obj\Debug\Proyecto_Lu
 C:\Users\velas\gestion-hotel\Proyecto_Lumel\Proyecto_Lumel\obj\Debug\Proyecto_Lumel.Forms.FormUsuarios.resources
 C:\Users\velas\gestion-hotel\Proyecto_Lumel\Proyecto_Lumel\obj\Debug\Proyecto_Lumel.Forms.FormSeleccionarHuesped.resources
 C:\Users\velas\gestion-hotel\Proyecto_Lumel\Proyecto_Lumel\obj\Debug\Proyecto_Lumel.Forms.FormSeleccionarHabitacion.resources
+C:\Users\velas\gestion-hotel\Proyecto_Lumel\Proyecto_Lumel\obj\Debug\Proyecto_Lumel.Forms.FormLogin.resources

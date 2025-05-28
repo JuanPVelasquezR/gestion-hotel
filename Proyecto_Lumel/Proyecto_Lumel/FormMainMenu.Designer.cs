@@ -32,19 +32,18 @@
             this.btnUsuarios = new FontAwesome.Sharp.IconButton();
             this.btnHuéspedes = new FontAwesome.Sharp.IconButton();
             this.btnHabitaciones = new FontAwesome.Sharp.IconButton();
-            this.btnHistorial = new FontAwesome.Sharp.IconButton();
             this.btnReservas = new FontAwesome.Sharp.IconButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnHome = new System.Windows.Forms.PictureBox();
             this.iconSplitButton1 = new FontAwesome.Sharp.IconSplitButton();
             this.panelTitleBar = new System.Windows.Forms.Panel();
+            this.btnExit = new FontAwesome.Sharp.IconButton();
+            this.btnMaximize = new FontAwesome.Sharp.IconButton();
+            this.btnMinimize = new FontAwesome.Sharp.IconButton();
             this.lblTitleChildForm = new System.Windows.Forms.Label();
             this.iconCurrentChildForm = new FontAwesome.Sharp.IconPictureBox();
             this.panelShadow = new System.Windows.Forms.Panel();
             this.panelDesktop = new System.Windows.Forms.Panel();
-            this.btnMinimize = new FontAwesome.Sharp.IconButton();
-            this.btnExit = new FontAwesome.Sharp.IconButton();
-            this.btnMaximize = new FontAwesome.Sharp.IconButton();
             this.panelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnHome)).BeginInit();
@@ -58,7 +57,6 @@
             this.panelMenu.Controls.Add(this.btnUsuarios);
             this.panelMenu.Controls.Add(this.btnHuéspedes);
             this.panelMenu.Controls.Add(this.btnHabitaciones);
-            this.panelMenu.Controls.Add(this.btnHistorial);
             this.panelMenu.Controls.Add(this.btnReservas);
             this.panelMenu.Controls.Add(this.panel1);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
@@ -77,7 +75,7 @@
             this.btnUsuarios.IconColor = System.Drawing.Color.Gainsboro;
             this.btnUsuarios.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUsuarios.Location = new System.Drawing.Point(0, 380);
+            this.btnUsuarios.Location = new System.Drawing.Point(0, 320);
             this.btnUsuarios.Name = "btnUsuarios";
             this.btnUsuarios.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnUsuarios.Size = new System.Drawing.Size(220, 60);
@@ -98,7 +96,7 @@
             this.btnHuéspedes.IconColor = System.Drawing.Color.Gainsboro;
             this.btnHuéspedes.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnHuéspedes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHuéspedes.Location = new System.Drawing.Point(0, 320);
+            this.btnHuéspedes.Location = new System.Drawing.Point(0, 260);
             this.btnHuéspedes.Name = "btnHuéspedes";
             this.btnHuéspedes.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnHuéspedes.Size = new System.Drawing.Size(220, 60);
@@ -119,7 +117,7 @@
             this.btnHabitaciones.IconColor = System.Drawing.Color.Gainsboro;
             this.btnHabitaciones.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnHabitaciones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHabitaciones.Location = new System.Drawing.Point(0, 260);
+            this.btnHabitaciones.Location = new System.Drawing.Point(0, 200);
             this.btnHabitaciones.Name = "btnHabitaciones";
             this.btnHabitaciones.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.btnHabitaciones.Size = new System.Drawing.Size(220, 60);
@@ -129,27 +127,6 @@
             this.btnHabitaciones.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnHabitaciones.UseVisualStyleBackColor = true;
             this.btnHabitaciones.Click += new System.EventHandler(this.btnHabitaciones_Click);
-            // 
-            // btnHistorial
-            // 
-            this.btnHistorial.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnHistorial.FlatAppearance.BorderSize = 0;
-            this.btnHistorial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHistorial.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnHistorial.IconChar = FontAwesome.Sharp.IconChar.CalendarAlt;
-            this.btnHistorial.IconColor = System.Drawing.Color.Gainsboro;
-            this.btnHistorial.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnHistorial.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHistorial.Location = new System.Drawing.Point(0, 200);
-            this.btnHistorial.Name = "btnHistorial";
-            this.btnHistorial.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.btnHistorial.Size = new System.Drawing.Size(220, 60);
-            this.btnHistorial.TabIndex = 2;
-            this.btnHistorial.Text = "Historial Reservas";
-            this.btnHistorial.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHistorial.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnHistorial.UseVisualStyleBackColor = true;
-            this.btnHistorial.Click += new System.EventHandler(this.btnHistorial_Click);
             // 
             // btnReservas
             // 
@@ -220,6 +197,56 @@
             this.panelTitleBar.TabIndex = 1;
             this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
             // 
+            // btnExit
+            // 
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnExit.IconChar = FontAwesome.Sharp.IconChar.X;
+            this.btnExit.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnExit.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnExit.Location = new System.Drawing.Point(688, 3);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(25, 23);
+            this.btnExit.TabIndex = 3;
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // btnMaximize
+            // 
+            this.btnMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMaximize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMaximize.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.btnMaximize.IconChar = FontAwesome.Sharp.IconChar.WindowMaximize;
+            this.btnMaximize.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnMaximize.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnMaximize.IconSize = 20;
+            this.btnMaximize.Location = new System.Drawing.Point(651, 3);
+            this.btnMaximize.Name = "btnMaximize";
+            this.btnMaximize.Size = new System.Drawing.Size(28, 23);
+            this.btnMaximize.TabIndex = 4;
+            this.btnMaximize.UseVisualStyleBackColor = false;
+            this.btnMaximize.Click += new System.EventHandler(this.btnMaximize_Click);
+            // 
+            // btnMinimize
+            // 
+            this.btnMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMinimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
+            this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMinimize.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnMinimize.IconChar = FontAwesome.Sharp.IconChar.WindowMinimize;
+            this.btnMinimize.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnMinimize.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnMinimize.IconSize = 20;
+            this.btnMinimize.Location = new System.Drawing.Point(620, 3);
+            this.btnMinimize.Name = "btnMinimize";
+            this.btnMinimize.Size = new System.Drawing.Size(25, 23);
+            this.btnMinimize.TabIndex = 2;
+            this.btnMinimize.UseVisualStyleBackColor = false;
+            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
+            // 
             // lblTitleChildForm
             // 
             this.lblTitleChildForm.AutoSize = true;
@@ -261,53 +288,6 @@
             this.panelDesktop.Size = new System.Drawing.Size(719, 490);
             this.panelDesktop.TabIndex = 3;
             // 
-            // btnMinimize
-            // 
-            this.btnMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMinimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
-            this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMinimize.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnMinimize.IconChar = FontAwesome.Sharp.IconChar.WindowMinimize;
-            this.btnMinimize.IconColor = System.Drawing.Color.Gainsboro;
-            this.btnMinimize.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnMinimize.IconSize = 20;
-            this.btnMinimize.Location = new System.Drawing.Point(620, 3);
-            this.btnMinimize.Name = "btnMinimize";
-            this.btnMinimize.Size = new System.Drawing.Size(25, 23);
-            this.btnMinimize.TabIndex = 2;
-            this.btnMinimize.UseVisualStyleBackColor = false;
-            // 
-            // btnExit
-            // 
-            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
-            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnExit.IconChar = FontAwesome.Sharp.IconChar.X;
-            this.btnExit.IconColor = System.Drawing.Color.Gainsboro;
-            this.btnExit.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnExit.Location = new System.Drawing.Point(688, 3);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(25, 23);
-            this.btnExit.TabIndex = 3;
-            this.btnExit.UseVisualStyleBackColor = false;
-            // 
-            // btnMaximize
-            // 
-            this.btnMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMaximize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMaximize.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.btnMaximize.IconChar = FontAwesome.Sharp.IconChar.WindowMaximize;
-            this.btnMaximize.IconColor = System.Drawing.Color.Gainsboro;
-            this.btnMaximize.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnMaximize.IconSize = 20;
-            this.btnMaximize.Location = new System.Drawing.Point(651, 3);
-            this.btnMaximize.Name = "btnMaximize";
-            this.btnMaximize.Size = new System.Drawing.Size(28, 23);
-            this.btnMaximize.TabIndex = 4;
-            this.btnMaximize.UseVisualStyleBackColor = false;
-            // 
             // FormMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -327,9 +307,6 @@
             this.panelTitleBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconCurrentChildForm)).EndInit();
             this.ResumeLayout(false);
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            this.btnMaximize.Click += new System.EventHandler(this.btnMaximize_Click);
-            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
 
         }
 
@@ -341,7 +318,6 @@
         private FontAwesome.Sharp.IconButton btnUsuarios;
         private FontAwesome.Sharp.IconButton btnHuéspedes;
         private FontAwesome.Sharp.IconButton btnHabitaciones;
-        private FontAwesome.Sharp.IconButton btnHistorial;
         private FontAwesome.Sharp.IconSplitButton iconSplitButton1;
         private System.Windows.Forms.PictureBox btnHome;
         private System.Windows.Forms.Panel panelTitleBar;

@@ -37,13 +37,15 @@ namespace Proyecto_Lumel.Data
                         command.Connection = connection;
                         
                         // Verificar disponibilidad de la habitación para las fechas seleccionadas
+                        // Mejorar la consulta para evitar falsos positivos
+                        // Usar los nombres correctos de las columnas en la base de datos
                         command.CommandText = @"
                             SELECT COUNT(*) FROM Reserva 
-                            WHERE id_habitacion = @idHabitacion 
-                            AND estado NOT IN ('Cancelada') 
-                            AND ((fecha_entrada BETWEEN @fechaEntrada AND @fechaSalida) 
-                            OR (fecha_salida BETWEEN @fechaEntrada AND @fechaSalida)
-                            OR (@fechaEntrada BETWEEN fecha_entrada AND fecha_salida))";
+                            WHERE IdHabitacion = @idHabitacion 
+                            AND Estado NOT IN ('Cancelada') 
+                            AND (
+                                (FechaEntrada <= @fechaSalida AND FechaSalida >= @fechaEntrada)
+                            )";
                         
                         command.Parameters.Add("@idHabitacion", SqlDbType.Int).Value = reserva.IdHabitacion;
                         command.Parameters.Add("@fechaEntrada", SqlDbType.DateTime).Value = reserva.FechaEntrada;
@@ -59,9 +61,10 @@ namespace Proyecto_Lumel.Data
                         command.Parameters.Clear();
                         
                         // Insertar la nueva reserva
+                        // Usar los nombres correctos de las columnas en la base de datos
                         command.CommandText = @"
-                            INSERT INTO Reserva (id_huesped, id_habitacion, fecha_entrada, fecha_salida, 
-                            precio_total, estado, observaciones, fecha_creacion) 
+                            INSERT INTO Reserva (IdHuesped, IdHabitacion, FechaEntrada, FechaSalida, 
+                            PrecioTotal, Estado, Observaciones, FechaCreacion) 
                             VALUES (@idHuesped, @idHabitacion, @fechaEntrada, @fechaSalida, 
                             @precioTotal, @estado, @observaciones, @fechaCreacion);
                             SELECT SCOPE_IDENTITY();";
@@ -81,9 +84,45 @@ namespace Proyecto_Lumel.Data
                     }
                 }
             }
+            catch (SqlException sqlEx)
+            {
+                // Manejar errores específicos de SQL Server
+                string errorMessage;
+                
+                switch (sqlEx.Number)
+                {
+                    case 2627:  // Violación de clave única
+                        errorMessage = "Ya existe una reserva con estos datos.";
+                        break;
+                    case 547:   // Restricción de clave foránea
+                        errorMessage = "La habitación o el huésped seleccionado no existe en la base de datos.";
+                        break;
+                    case 8152:  // Error de truncamiento de cadena
+                        errorMessage = "Uno de los campos contiene demasiados caracteres.";
+                        break;
+                    case 4060:  // Base de datos inaccesible
+                    case 4064:
+                    case 18456: // Error de login
+                        errorMessage = "No se pudo conectar a la base de datos. Verifique la conexión.";
+                        break;
+                    default:
+                        errorMessage = "Error en la base de datos: " + sqlEx.Message;
+                        break;
+                }
+                
+                throw new Exception(errorMessage);
+            }
             catch (Exception ex)
             {
-                throw new Exception("Error al agregar la reserva: " + ex.Message);
+                // Para otros tipos de excepciones
+                if (ex.Message.Contains("no está disponible"))
+                {
+                    throw; // Reenviar la excepción de disponibilidad sin modificar
+                }
+                else
+                {
+                    throw new Exception("Error al agregar la reserva: " + ex.Message);
+                }
             }
         }
 
@@ -203,16 +242,16 @@ namespace Proyecto_Lumel.Data
                         connection.Open();
                         command.Connection = connection;
                         command.CommandText = @"
-                            SELECT r.id_reserva, r.id_huesped, r.id_habitacion, r.fecha_entrada, 
-                            r.fecha_salida, r.precio_total, r.estado, r.observaciones, r.fecha_creacion,
-                            h.nombre + ' ' + h.apellido AS nombre_huesped,
-                            hab.numero AS numero_habitacion,
-                            hab.tipo AS tipo_habitacion,
-                            hab.precio_noche
+                            SELECT r.IdReserva, r.IdHuesped, r.IdHabitacion, r.FechaEntrada, 
+                            r.FechaSalida, r.PrecioTotal, r.Estado, r.Observaciones, r.FechaCreacion,
+                            h.Nombre + ' ' + h.Apellido AS nombre_huesped,
+                            hab.Numero AS numero_habitacion,
+                            hab.Tipo AS tipo_habitacion,
+                            hab.PrecioNoche AS precio_noche
                             FROM Reserva r
-                            INNER JOIN Huesped h ON r.id_huesped = h.id_huesped
-                            INNER JOIN Habitacion hab ON r.id_habitacion = hab.id_habitacion
-                            ORDER BY r.fecha_entrada DESC";
+                            INNER JOIN Huesped h ON r.IdHuesped = h.IdHuesped
+                            INNER JOIN Habitacion hab ON r.IdHabitacion = hab.IdHabitacion
+                            ORDER BY r.FechaEntrada DESC";
 
                         using (var reader = command.ExecuteReader())
                         {
@@ -249,18 +288,18 @@ namespace Proyecto_Lumel.Data
                         connection.Open();
                         command.Connection = connection;
                         command.CommandText = @"
-                            SELECT r.id_reserva, r.id_huesped, r.id_habitacion, r.fecha_entrada, 
-                            r.fecha_salida, r.precio_total, r.estado, r.observaciones, r.fecha_creacion,
-                            h.nombre + ' ' + h.apellido AS nombre_huesped,
-                            hab.numero AS numero_habitacion,
-                            hab.tipo AS tipo_habitacion,
-                            hab.precio_noche
+                            SELECT r.IdReserva, r.IdHuesped, r.IdHabitacion, r.FechaEntrada, 
+                            r.FechaSalida, r.PrecioTotal, r.Estado, r.Observaciones, r.FechaCreacion,
+                            h.Nombre + ' ' + h.Apellido AS nombre_huesped,
+                            hab.Numero AS numero_habitacion,
+                            hab.Tipo AS tipo_habitacion,
+                            hab.PrecioNoche AS precio_noche
                             FROM Reserva r
-                            INNER JOIN Huesped h ON r.id_huesped = h.id_huesped
-                            INNER JOIN Habitacion hab ON r.id_habitacion = hab.id_habitacion
-                            WHERE r.id_reserva = @id";
+                            INNER JOIN Huesped h ON r.IdHuesped = h.IdHuesped
+                            INNER JOIN Habitacion hab ON r.IdHabitacion = hab.IdHabitacion
+                            WHERE r.IdReserva = @idReserva";
 
-                        command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                        command.Parameters.Add("@idReserva", SqlDbType.Int).Value = id;
 
                         using (var reader = command.ExecuteReader())
                         {
@@ -296,20 +335,21 @@ namespace Proyecto_Lumel.Data
                         connection.Open();
                         command.Connection = connection;
                         command.CommandText = @"
-                            SELECT r.id_reserva, r.id_huesped, r.id_habitacion, r.fecha_entrada, 
-                            r.fecha_salida, r.precio_total, r.estado, r.observaciones, r.fecha_creacion,
-                            h.nombre + ' ' + h.apellido AS nombre_huesped,
-                            hab.numero AS numero_habitacion,
-                            hab.tipo AS tipo_habitacion,
-                            hab.precio_noche
+                            SELECT r.IdReserva, r.IdHuesped, r.IdHabitacion, r.FechaEntrada, 
+                            r.FechaSalida, r.PrecioTotal, r.Estado, r.Observaciones, r.FechaCreacion,
+                            h.Nombre + ' ' + h.Apellido AS nombre_huesped,
+                            hab.Numero AS numero_habitacion,
+                            hab.Tipo AS tipo_habitacion,
+                            hab.PrecioNoche AS precio_noche
                             FROM Reserva r
-                            INNER JOIN Huesped h ON r.id_huesped = h.id_huesped
-                            INNER JOIN Habitacion hab ON r.id_habitacion = hab.id_habitacion
-                            WHERE h.nombre LIKE @filter OR h.apellido LIKE @filter OR
-                            hab.numero LIKE @filter OR r.estado LIKE @filter
-                            ORDER BY r.fecha_entrada DESC";
+                            INNER JOIN Huesped h ON r.IdHuesped = h.IdHuesped
+                            INNER JOIN Habitacion hab ON r.IdHabitacion = hab.IdHabitacion
+                            WHERE h.Nombre + ' ' + h.Apellido LIKE @searchValue OR
+                            hab.Numero LIKE @searchValue OR
+                            r.Estado LIKE @searchValue
+                            ORDER BY r.FechaEntrada DESC";
 
-                        command.Parameters.Add("@filter", SqlDbType.NVarChar).Value = "%" + value + "%";
+                        command.Parameters.Add("@searchValue", SqlDbType.NVarChar).Value = "%" + value + "%";
 
                         using (var reader = command.ExecuteReader())
                         {
@@ -346,19 +386,17 @@ namespace Proyecto_Lumel.Data
                         connection.Open();
                         command.Connection = connection;
                         command.CommandText = @"
-                            SELECT r.id_reserva, r.id_huesped, r.id_habitacion, r.fecha_entrada, 
-                            r.fecha_salida, r.precio_total, r.estado, r.observaciones, r.fecha_creacion,
-                            h.nombre + ' ' + h.apellido AS nombre_huesped,
-                            hab.numero AS numero_habitacion,
-                            hab.tipo AS tipo_habitacion,
-                            hab.precio_noche
+                            SELECT r.IdReserva, r.IdHuesped, r.IdHabitacion, r.FechaEntrada, 
+                            r.FechaSalida, r.PrecioTotal, r.Estado, r.Observaciones, r.FechaCreacion,
+                            h.Nombre + ' ' + h.Apellido AS nombre_huesped,
+                            hab.Numero AS numero_habitacion,
+                            hab.Tipo AS tipo_habitacion,
+                            hab.PrecioNoche AS precio_noche
                             FROM Reserva r
-                            INNER JOIN Huesped h ON r.id_huesped = h.id_huesped
-                            INNER JOIN Habitacion hab ON r.id_habitacion = hab.id_habitacion
-                            WHERE (r.fecha_entrada BETWEEN @fechaInicio AND @fechaFin)
-                            OR (r.fecha_salida BETWEEN @fechaInicio AND @fechaFin)
-                            OR (@fechaInicio BETWEEN r.fecha_entrada AND r.fecha_salida)
-                            ORDER BY r.fecha_entrada";
+                            INNER JOIN Huesped h ON r.IdHuesped = h.IdHuesped
+                            INNER JOIN Habitacion hab ON r.IdHabitacion = hab.IdHabitacion
+                            WHERE r.FechaEntrada >= @fechaInicio AND r.FechaEntrada <= @fechaFin
+                            ORDER BY r.FechaEntrada DESC";
 
                         command.Parameters.Add("@fechaInicio", SqlDbType.DateTime).Value = fechaInicio;
                         command.Parameters.Add("@fechaFin", SqlDbType.DateTime).Value = fechaFin;
@@ -398,17 +436,17 @@ namespace Proyecto_Lumel.Data
                         connection.Open();
                         command.Connection = connection;
                         command.CommandText = @"
-                            SELECT r.id_reserva, r.id_huesped, r.id_habitacion, r.fecha_entrada, 
-                            r.fecha_salida, r.precio_total, r.estado, r.observaciones, r.fecha_creacion,
-                            h.nombre + ' ' + h.apellido AS nombre_huesped,
-                            hab.numero AS numero_habitacion,
-                            hab.tipo AS tipo_habitacion,
-                            hab.precio_noche
+                            SELECT r.IdReserva, r.IdHuesped, r.IdHabitacion, r.FechaEntrada, 
+                            r.FechaSalida, r.PrecioTotal, r.Estado, r.Observaciones, r.FechaCreacion,
+                            h.Nombre + ' ' + h.Apellido AS nombre_huesped,
+                            hab.Numero AS numero_habitacion,
+                            hab.Tipo AS tipo_habitacion,
+                            hab.PrecioNoche AS precio_noche
                             FROM Reserva r
-                            INNER JOIN Huesped h ON r.id_huesped = h.id_huesped
-                            INNER JOIN Habitacion hab ON r.id_habitacion = hab.id_habitacion
-                            WHERE r.id_huesped = @idHuesped
-                            ORDER BY r.fecha_entrada DESC";
+                            INNER JOIN Huesped h ON r.IdHuesped = h.IdHuesped
+                            INNER JOIN Habitacion hab ON r.IdHabitacion = hab.IdHabitacion
+                            WHERE r.IdHuesped = @idHuesped
+                            ORDER BY r.FechaEntrada DESC";
 
                         command.Parameters.Add("@idHuesped", SqlDbType.Int).Value = idHuesped;
 
@@ -447,17 +485,17 @@ namespace Proyecto_Lumel.Data
                         connection.Open();
                         command.Connection = connection;
                         command.CommandText = @"
-                            SELECT r.id_reserva, r.id_huesped, r.id_habitacion, r.fecha_entrada, 
-                            r.fecha_salida, r.precio_total, r.estado, r.observaciones, r.fecha_creacion,
-                            h.nombre + ' ' + h.apellido AS nombre_huesped,
-                            hab.numero AS numero_habitacion,
-                            hab.tipo AS tipo_habitacion,
-                            hab.precio_noche
+                            SELECT r.IdReserva, r.IdHuesped, r.IdHabitacion, r.FechaEntrada, 
+                            r.FechaSalida, r.PrecioTotal, r.Estado, r.Observaciones, r.FechaCreacion,
+                            h.Nombre + ' ' + h.Apellido AS nombre_huesped,
+                            hab.Numero AS numero_habitacion,
+                            hab.Tipo AS tipo_habitacion,
+                            hab.PrecioNoche AS precio_noche
                             FROM Reserva r
-                            INNER JOIN Huesped h ON r.id_huesped = h.id_huesped
-                            INNER JOIN Habitacion hab ON r.id_habitacion = hab.id_habitacion
-                            WHERE r.id_habitacion = @idHabitacion
-                            ORDER BY r.fecha_entrada DESC";
+                            INNER JOIN Huesped h ON r.IdHuesped = h.IdHuesped
+                            INNER JOIN Habitacion hab ON r.IdHabitacion = hab.IdHabitacion
+                            WHERE r.IdHabitacion = @idHabitacion
+                            ORDER BY r.FechaEntrada DESC";
 
                         command.Parameters.Add("@idHabitacion", SqlDbType.Int).Value = idHabitacion;
 
@@ -496,17 +534,17 @@ namespace Proyecto_Lumel.Data
                         connection.Open();
                         command.Connection = connection;
                         command.CommandText = @"
-                            SELECT r.id_reserva, r.id_huesped, r.id_habitacion, r.fecha_entrada, 
-                            r.fecha_salida, r.precio_total, r.estado, r.observaciones, r.fecha_creacion,
-                            h.nombre + ' ' + h.apellido AS nombre_huesped,
-                            hab.numero AS numero_habitacion,
-                            hab.tipo AS tipo_habitacion,
-                            hab.precio_noche
+                            SELECT r.IdReserva, r.IdHuesped, r.IdHabitacion, r.FechaEntrada, 
+                            r.FechaSalida, r.PrecioTotal, r.Estado, r.Observaciones, r.FechaCreacion,
+                            h.Nombre + ' ' + h.Apellido AS nombre_huesped,
+                            hab.Numero AS numero_habitacion,
+                            hab.Tipo AS tipo_habitacion,
+                            hab.PrecioNoche AS precio_noche
                             FROM Reserva r
-                            INNER JOIN Huesped h ON r.id_huesped = h.id_huesped
-                            INNER JOIN Habitacion hab ON r.id_habitacion = hab.id_habitacion
-                            WHERE r.estado = @estado
-                            ORDER BY r.fecha_entrada DESC";
+                            INNER JOIN Huesped h ON r.IdHuesped = h.IdHuesped
+                            INNER JOIN Habitacion hab ON r.IdHabitacion = hab.IdHabitacion
+                            WHERE r.Estado = @estado
+                            ORDER BY r.FechaEntrada DESC";
 
                         command.Parameters.Add("@estado", SqlDbType.NVarChar).Value = estado;
 
@@ -532,15 +570,15 @@ namespace Proyecto_Lumel.Data
         {
             return new Reserva
             {
-                IdReserva = Convert.ToInt32(reader["id_reserva"]),
-                IdHuesped = Convert.ToInt32(reader["id_huesped"]),
-                IdHabitacion = Convert.ToInt32(reader["id_habitacion"]),
-                FechaEntrada = Convert.ToDateTime(reader["fecha_entrada"]),
-                FechaSalida = Convert.ToDateTime(reader["fecha_salida"]),
-                PrecioTotal = Convert.ToDecimal(reader["precio_total"]),
-                Estado = reader["estado"].ToString(),
-                Observaciones = reader["observaciones"] == DBNull.Value ? null : reader["observaciones"].ToString(),
-                FechaCreacion = Convert.ToDateTime(reader["fecha_creacion"]),
+                IdReserva = Convert.ToInt32(reader["IdReserva"]),
+                IdHuesped = Convert.ToInt32(reader["IdHuesped"]),
+                IdHabitacion = Convert.ToInt32(reader["IdHabitacion"]),
+                FechaEntrada = Convert.ToDateTime(reader["FechaEntrada"]),
+                FechaSalida = Convert.ToDateTime(reader["FechaSalida"]),
+                PrecioTotal = Convert.ToDecimal(reader["PrecioTotal"]),
+                Estado = reader["Estado"].ToString(),
+                Observaciones = reader["Observaciones"] == DBNull.Value ? null : reader["Observaciones"].ToString(),
+                FechaCreacion = Convert.ToDateTime(reader["FechaCreacion"]),
                 NombreHuesped = reader["nombre_huesped"].ToString(),
                 NumeroHabitacion = reader["numero_habitacion"].ToString(),
                 TipoHabitacion = reader["tipo_habitacion"].ToString(),

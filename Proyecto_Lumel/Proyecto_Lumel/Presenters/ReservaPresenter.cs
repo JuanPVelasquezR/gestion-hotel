@@ -129,6 +129,23 @@ namespace Proyecto_Lumel.Presenters
                 return;
             }
             
+            // Validar que la fecha de entrada no sea anterior a la fecha actual
+            if (view.FechaEntrada.Date < DateTime.Today)
+            {
+                view.IsSuccessful = false;
+                view.Message = "La fecha de entrada no puede ser anterior a la fecha actual";
+                return;
+            }
+            
+            // Validar que el período de reserva sea razonable (por ejemplo, máximo 30 días)
+            TimeSpan duracion = view.FechaSalida - view.FechaEntrada;
+            if (duracion.TotalDays > 30)
+            {
+                view.IsSuccessful = false;
+                view.Message = "La duración de la reserva no puede exceder los 30 días";
+                return;
+            }
+            
             // Validar precio
             decimal precioTotal;
             if (!decimal.TryParse(view.PrecioTotal, out precioTotal) || precioTotal <= 0)
